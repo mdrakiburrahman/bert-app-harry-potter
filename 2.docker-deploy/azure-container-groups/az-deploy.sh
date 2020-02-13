@@ -1,12 +1,12 @@
 az login
-az account set --subscription "Predictive Analytics POC"
+az account set --subscription "Your--Subscription--Name"
 
-docker tag dockerize-cdqa-ui-test huskyazurecontainerregistry.azurecr.io/cdqa-ui
-docker tag dockerize-cdqa-api-test huskyazurecontainerregistry.azurecr.io/cdqa-api
+docker tag dockerize-cdqa-ui-test yourazurecontainerregistry.azurecr.io/cdqa-ui
+docker tag dockerize-cdqa-api-test yourazurecontainerregistry.azurecr.io/cdqa-api
 
-az acr login --name HuskyAzureContainerRegistry
+az acr login --name YourAzureContainerRegistry
 
-docker push huskyazurecontainerregistry.azurecr.io/cdqa-ui
-docker push huskyazurecontainerregistry.azurecr.io/cdqa-api
+docker push yourazurecontainerregistry.azurecr.io/cdqa-ui
+docker push yourazurecontainerregistry.azurecr.io/cdqa-api
 
-az group deployment create --resource-group HSE-POC-CDQA-Docker --template-file azuredeploy.json
+az group deployment create --resource-group HP-POC-CDQA-Docker --template-file azuredeploy.json
