@@ -11,11 +11,11 @@
         },
         "imageRegistryLoginServer": {
             "type": "string",
-            "defaultValue": "huskyazurecontainerregistry.azurecr.io"
+            "defaultValue": "yourazurecontainerregistry.azurecr.io"
         },
         "imageRegistryUsername": {
             "type": "string",
-            "defaultValue": "HuskyAzureContainerRegistry"
+            "defaultValue": "yourazurecontainerregistry"
         },
         "imageRegistryPassword": {
             "type": "string",
@@ -28,9 +28,9 @@
     },
     "variables": {
         "container1name": "cdqa-ui",
-        "container1image": "huskyazurecontainerregistry.azurecr.io/cdqa-ui",
+        "container1image": "yourazurecontainerregistry.azurecr.io/cdqa-ui",
         "container2name": "cdqa-api",
-        "container2image": "huskyazurecontainerregistry.azurecr.io/cdqa-api"
+        "container2image": "yourazurecontainerregistry.azurecr.io/cdqa-api"
     },
     "resources": [{
             "name": "[parameters('containerGroupName')]",
