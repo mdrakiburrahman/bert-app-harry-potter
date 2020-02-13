@@ -1,0 +1,5 @@
+docker build -t dockerize-cdqa-ui-test .
+docker run -it -p 8080:8080 --rm --name dockerize-cdqa dockerize-cdqa-ui-test
+
+docker build -t dockerize-cdqa-api-test .
+docker run -it -p 5000:5000 --rm --name dockerize-cdqa-api dockerize-cdqa-api-test

@@ -1,0 +1,7 @@
+I couldn't commit the scikit-learn wrapper here due to size limit of my Github repo.
+
+Please download from here: https://github.com/cdqa-suite/cdQA/releases/download/bert_qa_vCPU/bert_qa_vCPU-sklearn.joblib
+
+And place in this folder "data". I.e.: this folder should contain:
+- bert_qa_vCPU-sklearn.joblib
+- Harry_Potter_All.csv

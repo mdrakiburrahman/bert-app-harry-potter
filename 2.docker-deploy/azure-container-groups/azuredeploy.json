@@ -1,0 +1,101 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerGroupName": {
+            "type": "string",
+            "defaultValue": "cdQAGroup",
+            "metadata": {
+                "description": "cdQA Container Group consisting of API and UI."
+            }
+        },
+        "imageRegistryLoginServer": {
+            "type": "string",
+            "defaultValue": "huskyazurecontainerregistry.azurecr.io"
+        },
+        "imageRegistryUsername": {
+            "type": "string",
+            "defaultValue": "HuskyAzureContainerRegistry"
+        },
+        "imageRegistryPassword": {
+            "type": "string",
+            "defaultValue": "FwaSygSv8vorFXs6ExT=5wEby5TH8AQk"
+        },
+        "mydnsNameLabel": {
+            "type": "string",
+            "defaultValue": "cdQAUIappdemo"
+        }
+    },
+    "variables": {
+        "container1name": "cdqa-ui",
+        "container1image": "huskyazurecontainerregistry.azurecr.io/cdqa-ui",
+        "container2name": "cdqa-api",
+        "container2image": "huskyazurecontainerregistry.azurecr.io/cdqa-api"
+    },
+    "resources": [{
+            "name": "[parameters('containerGroupName')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2018-10-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "containers": [{
+                        "name": "[variables('container1name')]",
+                        "properties": {
+                            "image": "[variables('container1image')]",
+                            "resources": {
+                                "requests": {
+                                    "cpu": 1,
+                                    "memoryInGb": 6
+                                }
+                            },
+                            "ports": [{
+                                    "port": 8080
+                                }
+                            ]
+                        }
+                    }, {
+                        "name": "[variables('container2name')]",
+                        "properties": {
+                            "image": "[variables('container2image')]",
+                            "resources": {
+                                "requests": {
+                                    "cpu": 1,
+                                    "memoryInGb": 6
+                                }
+                            },
+                            "ports": [{
+                                    "port": 5000
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "imageRegistryCredentials": [{
+                        "server": "[parameters('imageRegistryLoginServer')]",
+                        "username": "[parameters('imageRegistryUsername')]",
+                        "password": "[parameters('imageRegistryPassword')]"
+                    }
+                ],
+                "osType": "Linux",
+                "ipAddress": {
+                    "type": "Public",
+                    "ports": [{
+                            "protocol": "tcp",
+                            "port": "5000"
+                        }, {
+                            "protocol": "tcp",
+                            "port": "8080"
+                        }
+                    ],
+                    "dnsNameLabel": "[parameters('mydnsNameLabel')]"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "containerIPv4Address": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+        }
+    }
+}
