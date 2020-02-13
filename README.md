@@ -20,15 +20,15 @@ A machine with the following tools installed:
 This will build the two containers `api` (BERT model API) and `UI` (Vue.js web app) on your local Docker Instance.
 
 4) Run the following commands to push the containers to your Azure Container Registry (from **Step 1**), and deploy the Containers into a Container Group:
-`az login
-az account set --subscription "Your--Subscription--Name"
+`az login`
+`az account set --subscription "Your--Subscription--Name"`
 
-docker tag dockerize-cdqa-ui-test yourazurecontainerregistry.azurecr.io/cdqa-ui
-docker tag dockerize-cdqa-api-test yourazurecontainerregistry.azurecr.io/cdqa-api
+`docker tag dockerize-cdqa-ui-test yourazurecontainerregistry.azurecr.io/cdqa-ui`
+`docker tag dockerize-cdqa-api-test yourazurecontainerregistry.azurecr.io/cdqa-api`
 
-az acr login --name YourAzureContainerRegistry
+`az acr login --name YourAzureContainerRegistry`
 
-docker push yourazurecontainerregistry.azurecr.io/cdqa-ui
-docker push yourazurecontainerregistry.azurecr.io/cdqa-api
+`docker push yourazurecontainerregistry.azurecr.io/cdqa-ui`
+`docker push yourazurecontainerregistry.azurecr.io/cdqa-api`
 
-az group deployment create --resource-group HP-POC-CDQA-Docker --template-file azuredeploy.json`
+`az group deployment create --resource-group HP-POC-CDQA-Docker --template-file azuredeploy.json`
