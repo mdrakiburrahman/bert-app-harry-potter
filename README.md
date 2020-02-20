@@ -1,4 +1,7 @@
 # bert-app-harry-potter
+
+This Git repo is to supplement this article writeup for the app: [here](https://www.linkedin.com/pulse/building-intelligent-harry-potter-search-engine-bert-azure-rahman/)
+
 A dockerized BERT-As-Service Q&amp;A application with Vue.js front end, trained on Harry Potter corpus
 
 ### Pre-requisite
