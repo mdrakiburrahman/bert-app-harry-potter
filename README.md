@@ -19,7 +19,7 @@ A machine with the following tools installed:
 
 This will build the two containers `api` (BERT model API) and `UI` (Vue.js web app) on your local Docker Instance.
 
-** Step 4.** Run the following commands to push the containers to your Azure Container Registry (from **Step 1**), and deploy the Containers into a Container Group:
+**Step 4.** Run the following commands to push the containers to your Azure Container Registry (from **Step 1**), and deploy the Containers into a Container Group:
 `az login` <br>
 `az account set --subscription "Your--Subscription--Name"` <br><br>
 
